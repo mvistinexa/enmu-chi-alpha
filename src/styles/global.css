@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-body text-body;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-charcoal;
+  }
+
+  /* Visible keyboard focus everywhere — never suppressed */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #046A38;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-brand font-body font-medium text-btn px-md py-[12px] transition-colors duration-150;
+  }
+
+  .btn-primary {
+    @apply btn bg-green text-white hover:bg-green-dark;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent text-green border-[1.5px] border-green hover:bg-green hover:text-white;
+  }
+
+  .btn-clay {
+    @apply btn bg-clay text-white hover:brightness-95;
+  }
+
+  .container-page {
+    @apply mx-auto max-w-6xl px-sm sm:px-md;
+  }
+}

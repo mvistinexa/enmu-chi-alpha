@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const ministries = [
+  {
+    title: 'Worship Nights',
+    meta: 'Thursdays · 8:00 PM',
+    desc: 'Live music, a short message, and a whole lot of community. Free food, every week.',
+  },
+  {
+    title: 'Small Groups',
+    meta: 'Various days',
+    desc: 'Smaller crews that meet through the week to dig into faith and life together — and grab food while we\u2019re at it.',
+  },
+  {
+    title: 'Game Nights & Hangouts',
+    meta: 'Monthly',
+    desc: 'From game nights to intramurals, we make time to just have fun together. No agenda required.',
+  },
+];
+---
+
+<Layout title="Home">
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-green via-green to-sage text-cream overflow-hidden">
+    <!--
+      TODO: swap this gradient for a full-bleed photo or short video loop of real
+      students/events, per style guide section 6. A photo/video hero was the
+      single element called out as highest priority.
+    -->
+    <div class="container-page pt-3xl pb-2xl md:pb-[120px] relative z-10">
+      <p class="font-body font-medium text-small-lg uppercase tracking-widest text-cream/80 mb-sm">
+        ENMU&rsquo;s College Ministry
+      </p>
+      <h1 class="font-display font-bold text-hero md:text-hero-lg max-w-2xl">
+        You&rsquo;re Always Welcome Here
+      </h1>
+      <p class="font-body text-body md:text-h4 text-cream/90 max-w-prose mt-sm mb-lg">
+        Chi Alpha is a community of ENMU students finding real friendship, free
+        food, and a place to belong &mdash; no perfect résumé required.
+      </p>
+      <div class="flex flex-wrap gap-sm">
+        <a href="#meeting-info" class="btn bg-cream text-green hover:bg-white">
+          Join Us Thursdays
+        </a>
+        <a
+          href="/about"
+          class="btn bg-transparent text-cream border-[1.5px] border-cream hover:bg-cream hover:text-green"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating "key info" card — surfaces what/when/how without scrolling -->
+  <div class="container-page relative -mt-xl md:-mt-[88px] z-20">
+    <div
+      id="meeting-info"
+      class="scroll-mt-24 bg-cream border border-sage/20 shadow-xl rounded-brand px-md py-md md:px-lg md:py-lg grid gap-md sm:grid-cols-3"
+    >
+      <div>
+        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
+          What We Are
+        </p>
+        <p class="font-display font-semibold text-h4">A college ministry for ENMU students</p>
+      </div>
+      <div>
+        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
+          When We Meet
+        </p>
+        <!-- TODO: confirm real meeting day/time/location -->
+        <p class="font-display font-semibold text-h4">Thursdays · 8:00 PM · CUB Ballroom</p>
+      </div>
+      <div>
+        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
+          How to Get Involved
+        </p>
+        <p class="font-display font-semibold text-h4">Just show up &mdash; we&rsquo;ll save you a seat</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About / Welcome -->
+  <section class="container-page py-3xl grid gap-lg md:grid-cols-2 items-center">
+    <div>
+      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Who We Are</p>
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">
+        More Than a Club. A Family Away From Home.
+      </h2>
+      <p class="text-body max-w-prose mb-sm">
+        College is a big change, and figuring it out solo is hard. Chi Alpha is
+        a space where ENMU students meet weekly for worship, real
+        conversations, and food &mdash; building friendships that last past
+        graduation.
+      </p>
+      <p class="text-body max-w-prose">
+        We&rsquo;re a Christian community, but you don&rsquo;t need to have it
+        all figured out to belong here. Come with questions, come with doubts
+        &mdash; just come.
+      </p>
+    </div>
+    <div class="aspect-[4/3] rounded-brand bg-sage/30 flex items-center justify-center">
+      <!-- TODO: replace with a real candid photo (worship night, group hangout, etc.) -->
+      <span class="text-charcoal/40 text-small">Photo coming soon</span>
+    </div>
+  </section>
+
+  <!-- Ways to get connected -->
+  <section class="bg-sage/10 py-3xl">
+    <div class="container-page">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
+        Ways to Get Connected
+      </h2>
+      <div class="grid gap-md sm:grid-cols-3">
+        {ministries.map((m) => (
+          <div class="bg-cream rounded-brand overflow-hidden shadow-sm">
+            <div class="aspect-[4/3] bg-sage/30 flex items-center justify-center">
+              <!-- TODO: replace with real photo for this ministry -->
+              <span class="text-charcoal/40 text-small">Photo coming soon</span>
+            </div>
+            <div class="p-md">
+              <p class="font-body font-medium text-small-lg text-clay mb-[2px]">{m.meta}</p>
+              <h3 class="font-display font-semibold text-h4 mb-xs">{m.title}</h3>
+              <p class="text-body">{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo gallery -->
+  <section class="container-page py-3xl">
+    <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg">Life at Chi Alpha</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+      {Array.from({ length: 4 }).map(() => (
+        <div class="aspect-square rounded-brand bg-sage/20 flex items-center justify-center">
+          <!-- TODO: replace with real candid photos from events -->
+          <span class="text-charcoal/40 text-small">Photo</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-green text-cream py-2xl">
+    <div class="container-page text-center">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Ready to Jump In?</h2>
+      <p class="text-body max-w-prose mx-auto mb-lg text-cream/90">
+        First time is always free, always low-pressure. We&rsquo;d love to have you.
+      </p>
+      <a href="/get-involved" class="btn-clay">Get Involved</a>
+    </div>
+  </section>
+</Layout>
