@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const years = ['Freshman', 'Sophomore', 'Junior', 'Senior'];
+const interests = ['Small Group', 'Chi Alpha Night', 'Just have questions'];
+---
+
+<Layout title="Contact Us" description="Get connected with ENMU Chi Alpha — fill out our connect card and we'll be in touch.">
+  <section class="container-page pt-2xl pb-2xl md:pt-3xl md:pb-3xl">
+    <div class="max-w-xl mx-auto text-center mb-lg">
+      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Contact Us</p>
+      <h1 class="font-display font-bold text-hero md:text-hero-lg mb-sm">Let&rsquo;s Connect</h1>
+      <p class="text-body md:text-h4 text-charcoal/80">
+        Fill this out and we&rsquo;ll reach out to say hi &mdash; no pressure, just a friendly hello.
+      </p>
+    </div>
+
+    <div class="max-w-xl mx-auto">
+      <form
+        id="connect-form"
+        class="bg-cream border border-sage/20 shadow-xl rounded-brand p-md md:p-lg flex flex-col gap-md"
+      >
+        <div>
+          <label for="name" class="block font-body font-medium text-small-lg text-charcoal mb-xs">
+            Your Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="entry.792149397"
+            required
+            class="w-full rounded-brand border border-sage/40 px-sm py-[10px] font-body text-body text-charcoal bg-white focus:outline-none focus:border-green"
+          />
+        </div>
+
+        <div>
+          <label for="contact" class="block font-body font-medium text-small-lg text-charcoal mb-xs">
+            Email or Phone *
+          </label>
+          <input
+            type="text"
+            id="contact"
+            name="entry.2067436905"
+            required
+            class="w-full rounded-brand border border-sage/40 px-sm py-[10px] font-body text-body text-charcoal bg-white focus:outline-none focus:border-green"
+          />
+        </div>
+
+        <fieldset>
+          <legend class="font-body font-medium text-small-lg text-charcoal mb-xs">Year in School *</legend>
+          <div class="flex flex-wrap gap-sm items-center">
+            {years.map((year) => (
+              <label class="flex items-center gap-xs text-body text-charcoal">
+                <input type="radio" name="entry.889712548" value={year} required class="accent-green" />
+                {year}
+              </label>
+            ))}
+            <label class="flex items-center gap-xs text-body text-charcoal">
+              <input
+                type="radio"
+                name="entry.889712548"
+                value="__other_option__"
+                required
+                class="accent-green"
+                data-other-toggle="year-other-input"
+              />
+              Other
+            </label>
+          </div>
+          <input
+            type="text"
+            id="year-other-input"
+            name="entry.889712548.other_option_response"
+            placeholder="Please specify"
+            disabled
+            class="hidden mt-xs w-full max-w-xs rounded-brand border border-sage/40 px-sm py-[8px] font-body text-body text-charcoal bg-white focus:outline-none focus:border-green"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend class="font-body font-medium text-small-lg text-charcoal mb-xs">I&rsquo;m interested in:</legend>
+          <div class="flex flex-wrap gap-sm items-center">
+            {interests.map((interest) => (
+              <label class="flex items-center gap-xs text-body text-charcoal">
+                <input type="checkbox" name="entry.147538543" value={interest} class="accent-green" />
+                {interest}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="message" class="block font-body font-medium text-small-lg text-charcoal mb-xs">
+            Anything else?
+          </label>
+          <textarea
+            id="message"
+            name="entry.243958788"
+            rows="4"
+            class="w-full rounded-brand border border-sage/40 px-sm py-[10px] font-body text-body text-charcoal bg-white focus:outline-none focus:border-green"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary self-start">Send</button>
+      </form>
+
+      <p id="form-status" class="hidden text-body mt-md text-center" role="status"></p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Show/enable the "Other, please specify" text input only when its
+  // matching radio/checkbox is selected.
+  document.querySelectorAll<HTMLInputElement>('[data-other-toggle]').forEach((toggle) => {
+    const targetId = toggle.dataset.otherToggle;
+    const otherInput = targetId ? document.getElementById(targetId) as HTMLInputElement | null : null;
+    if (!otherInput) return;
+
+    const groupName = toggle.name;
+    document.querySelectorAll<HTMLInputElement>(`input[name="${groupName}"]`).forEach((sibling) => {
+      sibling.addEventListener('change', () => {
+        const show = toggle.checked;
+        otherInput.classList.toggle('hidden', !show);
+        otherInput.disabled = !show;
+        if (show) otherInput.focus();
+      });
+    });
+  });
+</script>
+
+<script>
+  const FORM_ACTION =
+    'https://docs.google.com/forms/d/e/1FAIpQLScXgH8ObeO1kvj9OlF4SnUSEiOtpdr3kUQTf6vTgqKPakv7FQ/formResponse';
+
+  const form = document.getElementById('connect-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      await fetch(FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      });
+      form.classList.add('hidden');
+      if (status) {
+        status.textContent = 'Thanks! We’ll be in touch soon.';
+        status.classList.remove('hidden');
+        status.classList.add('text-green', 'font-medium');
+      }
+    } catch (err) {
+      if (status) {
+        status.textContent = 'Something went wrong — please try again.';
+        status.classList.remove('hidden');
+        status.classList.add('text-clay', 'font-medium');
+      }
+    }
+  });
+</script>

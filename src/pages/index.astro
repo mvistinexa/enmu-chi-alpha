@@ -3,48 +3,63 @@ import Layout from '../layouts/Layout.astro';
 
 const ministries = [
   {
-    title: 'Worship Nights',
-    meta: 'Thursdays · 8:00 PM',
-    desc: 'Live music, a short message, and a whole lot of community. Free food, every week.',
+    title: 'Chi Alpha Night',
+    meta: 'Thursdays · 7:00 PM',
+    desc: 'Live music, a short message that makes you think, and a room full of people glad you showed up.',
   },
   {
     title: 'Small Groups',
-    meta: 'Various days',
-    desc: 'Smaller crews that meet through the week to dig into faith and life together — and grab food while we\u2019re at it.',
+    meta: 'Throughout the Week',
+    desc: 'Smaller circles where you can actually be known — interesting topics, honest conversation, and real friends.',
   },
   {
     title: 'Game Nights & Hangouts',
-    meta: 'Monthly',
-    desc: 'From game nights to intramurals, we make time to just have fun together. No agenda required.',
+    meta: 'When the Mood Strikes',
+    desc: "Whether it's game night or just hanging out, this is time to relax, laugh, and be yourself.",
   },
 ];
 ---
 
-<Layout title="Home">
+<Layout title="Home" transparentHeader={true}>
   <!-- Hero -->
-  <section class="relative bg-gradient-to-br from-green via-green to-sage text-cream overflow-hidden">
+  <section class="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-green text-cream">
     <!--
-      TODO: swap this gradient for a full-bleed photo or short video loop of real
-      students/events, per style guide section 6. A photo/video hero was the
-      single element called out as highest priority.
+      TODO: add the real video file at public/videos/hero.mp4 (and a matching
+      poster frame at public/images/hero-poster.jpg). Until then this falls
+      back to the green background above.
     -->
-    <div class="container-page pt-3xl pb-2xl md:pb-[120px] relative z-10">
+    <video
+      id="hero-video"
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/images/hero-poster.jpg"
+    >
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-charcoal/40"></div>
+
+    <script>
+      // Falls back to the plain green background (no retry loop) until a
+      // real file exists at public/videos/hero.mp4.
+      const heroVideo = document.getElementById('hero-video') as HTMLVideoElement | null;
+      heroVideo?.addEventListener('error', () => heroVideo.remove(), { once: true });
+    </script>
+
+    <div class="container-page relative z-10 flex h-full flex-col items-center justify-center text-center pb-2xl">
       <p class="font-body font-medium text-small-lg uppercase tracking-widest text-cream/80 mb-sm">
-        ENMU&rsquo;s College Ministry
+        Chi Alpha &middot; Eastern New Mexico University
       </p>
-      <h1 class="font-display font-bold text-hero md:text-hero-lg max-w-2xl">
-        You&rsquo;re Always Welcome Here
+      <h1 class="font-display font-bold text-hero md:text-hero-lg text-cream">
+        Real Devotion<br />
+        Real Community<br />
+        Real Responsibility
       </h1>
-      <p class="font-body text-body md:text-h4 text-cream/90 max-w-prose mt-sm mb-lg">
-        Chi Alpha is a community of ENMU students finding real friendship, free
-        food, and a place to belong &mdash; no perfect résumé required.
-      </p>
-      <div class="flex flex-wrap gap-sm">
-        <a href="#meeting-info" class="btn bg-cream text-green hover:bg-white">
-          Join Us Thursdays
-        </a>
+      <div class="mt-lg">
         <a
-          href="/about"
+          href="/get-connected"
           class="btn bg-transparent text-cream border-[1.5px] border-cream hover:bg-cream hover:text-green"
         >
           Learn More
@@ -53,36 +68,22 @@ const ministries = [
     </div>
   </section>
 
-  <!-- Floating "key info" card — surfaces what/when/how without scrolling -->
-  <div class="container-page relative -mt-xl md:-mt-[88px] z-20">
-    <div
-      id="meeting-info"
-      class="scroll-mt-24 bg-cream border border-sage/20 shadow-xl rounded-brand px-md py-md md:px-lg md:py-lg grid gap-md sm:grid-cols-3"
-    >
-      <div>
-        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
-          What We Are
-        </p>
-        <p class="font-display font-semibold text-h4">A college ministry for ENMU students</p>
-      </div>
-      <div>
-        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
-          When We Meet
-        </p>
-        <!-- TODO: confirm real meeting day/time/location -->
-        <p class="font-display font-semibold text-h4">Thursdays · 8:00 PM · CUB Ballroom</p>
-      </div>
-      <div>
-        <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay mb-[4px]">
-          How to Get Involved
-        </p>
-        <p class="font-display font-semibold text-h4">Just show up &mdash; we&rsquo;ll save you a seat</p>
-      </div>
+  <!-- Scripture quote bar — straddles the hero/next-section boundary -->
+  <div id="meeting-info" class="scroll-mt-24 container-page relative z-20 -mt-[110px] md:-mt-[98px]">
+    <div class="bg-cream border border-sage/20 shadow-xl rounded-brand px-md py-lg md:px-3xl md:py-xl text-center">
+      <p class="font-display italic text-h4 md:text-h3-lg text-charcoal mb-sm">
+        &ldquo;We are therefore Christ&rsquo;s ambassadors, as though God were
+        making his appeal through us. We implore you on Christ&rsquo;s behalf:
+        Be reconciled to God.&rdquo;
+      </p>
+      <p class="font-body font-medium text-small-lg uppercase tracking-wide text-clay">
+        2 Corinthians 5:20
+      </p>
     </div>
   </div>
 
   <!-- About / Welcome -->
-  <section class="container-page py-3xl grid gap-lg md:grid-cols-2 items-center">
+  <section class="container-page py-2xl md:py-3xl grid gap-lg md:grid-cols-2 items-center">
     <div>
       <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Who We Are</p>
       <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">
@@ -91,7 +92,7 @@ const ministries = [
       <p class="text-body max-w-prose mb-sm">
         College is a big change, and figuring it out solo is hard. Chi Alpha is
         a space where ENMU students meet weekly for worship, real
-        conversations, and food &mdash; building friendships that last past
+        conversations, and fun &mdash; building friendships that last past
         graduation.
       </p>
       <p class="text-body max-w-prose">
@@ -107,7 +108,7 @@ const ministries = [
   </section>
 
   <!-- Ways to get connected -->
-  <section class="bg-sage/10 py-3xl">
+  <section class="bg-sage/10 py-2xl md:py-3xl">
     <div class="container-page">
       <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
         Ways to Get Connected
@@ -130,27 +131,70 @@ const ministries = [
     </div>
   </section>
 
-  <!-- Photo gallery -->
-  <section class="container-page py-3xl">
-    <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg">Life at Chi Alpha</h2>
+  <!-- Photo gallery — tiles link out to recent Instagram posts -->
+  <section class="container-page py-2xl md:py-3xl">
+    <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg">Life at ENMU Chi Alpha</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
-      {Array.from({ length: 4 }).map(() => (
-        <div class="aspect-square rounded-brand bg-sage/20 flex items-center justify-center">
-          <!-- TODO: replace with real candid photos from events -->
-          <span class="text-charcoal/40 text-small">Photo</span>
-        </div>
-      ))}
+      <a
+        href="https://www.instagram.com/p/CwHcUowuwrt/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="aspect-square rounded-brand overflow-hidden block border border-clay/30 hover:opacity-90 transition-opacity"
+      >
+        <img
+          src="/images/gallery-verse.png"
+          alt="2 Corinthians 5:20 — We are therefore Christ's ambassadors"
+          class="w-full h-full object-cover"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/enmu.xa/p/DUBmqOnj23J/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="aspect-square rounded-brand overflow-hidden block border border-clay/30 hover:opacity-90 transition-opacity"
+      >
+        <img
+          src="/images/gallery-small-group.png"
+          alt="All About Small Group — guys small group Monday nights, girls small group Tuesday nights"
+          class="w-full h-full object-cover"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/enmu.xa/p/DT0i4TOET9N/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="aspect-square rounded-brand overflow-hidden block border border-clay/30 hover:opacity-90 transition-opacity"
+      >
+        <img
+          src="/images/gallery-chi-alpha-night.png"
+          alt="Chi Alpha Night photo collage — students gathered for worship and community"
+          class="w-full h-full object-cover"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/enmu.xa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="aspect-square rounded-brand bg-clay/10 border border-clay/30 flex items-center justify-center hover:bg-clay/20 transition-colors"
+      >
+        <span class="text-clay text-small font-medium">See More on Instagram</span>
+      </a>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="bg-green text-cream py-2xl">
+  <section class="bg-green-dark text-cream py-xl md:py-2xl">
     <div class="container-page text-center">
-      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Ready to Jump In?</h2>
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm text-cream">Ready to Jump In?</h2>
       <p class="text-body max-w-prose mx-auto mb-lg text-cream/90">
-        First time is always free, always low-pressure. We&rsquo;d love to have you.
+        There&rsquo;s no wrong way to start &mdash; just show up. We&rsquo;d love to have you.
       </p>
-      <a href="/get-involved" class="btn-clay">Get Involved</a>
+      <a
+        href="/contact"
+        class="btn bg-green text-cream hover:brightness-110"
+      >
+        Get Connected
+      </a>
     </div>
   </section>
 </Layout>

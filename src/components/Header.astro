@@ -1,16 +1,33 @@
 ---
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Events', href: '/events' },
-  { label: 'Get Involved', href: '/get-involved' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Who We Are', href: '/who-we-are' },
+  { label: 'Get Connected', href: '/get-connected' },
+  { label: 'Resources', href: '/resources' },
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-sage/30">
+<header
+  id="site-header"
+  data-transparent={transparent ? 'true' : 'false'}
+  class={
+    transparent
+      ? 'fixed top-0 inset-x-0 z-40 bg-transparent border-b border-transparent transition-colors duration-300'
+      : 'sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-sage/30 transition-colors duration-300'
+  }
+>
   <div class="container-page flex items-center justify-between h-[72px]">
-    <a href="/" class="font-display font-semibold text-h4 md:text-h4-lg text-green">
+    <a
+      href="/"
+      data-header-logo
+      class={`font-display font-semibold text-h4 md:text-h4-lg transition-colors duration-300 ${transparent ? 'text-cream' : 'text-green'}`}
+    >
       ENMU Chi Alpha
     </a>
 
@@ -19,18 +36,20 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-body text-body text-charcoal hover:text-green transition-colors"
+          data-header-link
+          class={`font-body text-body transition-colors duration-300 ${transparent ? 'text-cream hover:text-cream/70' : 'text-charcoal hover:text-green'}`}
         >
           {link.label}
         </a>
       ))}
-      <a href="/get-involved" class="btn-primary">Join Us</a>
+      <a href="/contact" class="btn-primary">Contact Us</a>
     </nav>
 
     <!-- Mobile menu button -->
     <button
       id="menu-toggle"
-      class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-brand text-charcoal"
+      data-header-link
+      class={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-brand transition-colors duration-300 ${transparent ? 'text-cream' : 'text-charcoal'}`}
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Open menu"
@@ -47,7 +66,7 @@ const navLinks = [
   <!-- Mobile nav panel -->
   <nav
     id="mobile-menu"
-    class="md:hidden hidden flex-col gap-sm px-sm pb-md"
+    class="md:hidden hidden flex-col gap-sm px-sm pb-md bg-cream"
     aria-label="Primary mobile"
   >
     {navLinks.map((link) => (
@@ -58,7 +77,7 @@ const navLinks = [
         {link.label}
       </a>
     ))}
-    <a href="/get-involved" class="btn-primary w-full mt-xs">Join Us</a>
+    <a href="/get-connected" class="btn-primary w-full mt-xs">Contact Us</a>
   </nav>
 </header>
 
@@ -77,4 +96,37 @@ const navLinks = [
     toggle.setAttribute('aria-expanded', String(!isOpen));
     toggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
   });
+</script>
+
+<script>
+  const header = document.getElementById('site-header');
+
+  if (header?.dataset.transparent === 'true') {
+    const logo = header.querySelector('[data-header-logo]');
+    const links = header.querySelectorAll('[data-header-link]');
+    const scrollThreshold = 40;
+
+    const updateHeader = () => {
+      const scrolled = window.scrollY > scrollThreshold;
+
+      header.classList.toggle('bg-cream/95', scrolled);
+      header.classList.toggle('backdrop-blur', scrolled);
+      header.classList.toggle('border-sage/30', scrolled);
+      header.classList.toggle('bg-transparent', !scrolled);
+      header.classList.toggle('border-transparent', !scrolled);
+
+      logo?.classList.toggle('text-green', scrolled);
+      logo?.classList.toggle('text-cream', !scrolled);
+
+      links.forEach((link) => {
+        link.classList.toggle('text-charcoal', scrolled);
+        link.classList.toggle('hover:text-green', scrolled);
+        link.classList.toggle('text-cream', !scrolled);
+        link.classList.toggle('hover:text-cream/70', !scrolled);
+      });
+    };
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+  }
 </script>

@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const beliefs = [
+  {
+    title: 'The Bible',
+    desc: 'We believe Scripture is God’s word — trustworthy, relevant, and worth wrestling with, not just reading.',
+  },
+  {
+    title: 'Jesus',
+    desc: 'We believe Jesus is who he said he was — and that following him changes everything, starting with how we treat each other.',
+  },
+  {
+    title: 'Community',
+    desc: 'We believe faith isn’t meant to be private. We grow best together, not alone.',
+  },
+  {
+    title: 'Grace',
+    desc: 'We believe you don’t have to have it figured out to belong here. Come as you are.',
+  },
+];
+
+const leaders = [
+  {
+    name: 'Name Coming Soon',
+    role: 'Campus Director',
+  },
+  {
+    name: 'Name Coming Soon',
+    role: 'Staff',
+  },
+  {
+    name: 'Name Coming Soon',
+    role: 'Student Leader',
+  },
+];
+---
+
+<Layout title="Who We Are" description="Meet ENMU Chi Alpha — our story, what we believe, and the people leading it.">
+  <!-- Our Story -->
+  <section class="container-page pt-2xl pb-2xl md:pt-3xl md:pb-3xl grid gap-lg md:grid-cols-2 items-center">
+    <div class="aspect-[4/3] rounded-brand bg-sage/30 flex items-center justify-center order-2 md:order-1">
+      <!-- TODO: replace with a real candid photo -->
+      <span class="text-charcoal/40 text-small">Photo coming soon</span>
+    </div>
+    <div class="order-1 md:order-2">
+      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Our Story</p>
+      <h1 class="font-display font-bold text-h2 md:text-h2-lg mb-sm">
+        Started by Students, Still Led by Students
+      </h1>
+      <p class="text-body max-w-prose mb-sm">
+        Chi Alpha is the campus ministry of the Assemblies of God, present on college campuses
+        across the country &mdash; including right here at ENMU. We started as a small group of
+        students looking for something realer than a Sunday-only faith, and we&rsquo;ve grown into
+        a community that shows up for each other week after week.
+      </p>
+      <p class="text-body max-w-prose">
+        Whether you grew up in church, walked away from it, or have never set foot in one,
+        you&rsquo;ll find the same thing here: real friendships, honest conversations, and space to
+        figure out what you believe &mdash; together.
+      </p>
+    </div>
+  </section>
+
+  <!-- What We Believe -->
+  <section class="bg-sage/10 py-2xl md:py-3xl">
+    <div class="container-page">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
+        What We Believe
+      </h2>
+      <div class="grid gap-md sm:grid-cols-2 lg:grid-cols-4">
+        {beliefs.map((b) => (
+          <div class="bg-cream rounded-brand p-md shadow-sm">
+            <h3 class="font-display font-semibold text-h4 mb-xs">{b.title}</h3>
+            <p class="text-body">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="container-page py-2xl md:py-3xl">
+    <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
+      Meet the Team
+    </h2>
+    <div class="grid gap-md sm:grid-cols-3 max-w-3xl mx-auto">
+      {leaders.map((leader) => (
+        <div class="text-center">
+          <div class="aspect-square rounded-brand bg-sage/20 flex items-center justify-center mb-sm">
+            <!-- TODO: replace with a real staff/leader photo -->
+            <span class="text-charcoal/40 text-small">Photo coming soon</span>
+          </div>
+          <p class="font-display font-semibold text-h4">{leader.name}</p>
+          <p class="font-body text-small-lg text-clay uppercase tracking-wide">{leader.role}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-green-dark text-cream py-xl md:py-2xl">
+    <div class="container-page text-center">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm text-cream">Come Say Hi</h2>
+      <p class="text-body max-w-prose mx-auto mb-lg text-cream/90">
+        The best way to get to know us is in person &mdash; we&rsquo;d love to meet you.
+      </p>
+      <a
+        href="/get-connected"
+        class="btn bg-green text-cream hover:brightness-110"
+      >
+        Get Connected
+      </a>
+    </div>
+  </section>
+</Layout>

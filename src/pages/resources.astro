@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const SPOTIFY_SHOW_ID = '3J1IoOicay3pxTKuPbY4rt';
+const APPLE_PODCAST_PATH = 'us/podcast/enmu-chi-alpha/id1797904561';
+---
+
+<Layout title="Resources" description="Catch up on the podcast and find resources to keep growing between Chi Alpha Nights.">
+  <!-- Page intro -->
+  <section class="container-page py-2xl md:py-3xl text-center">
+    <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Resources</p>
+    <h1 class="font-display font-bold text-hero md:text-hero-lg mb-sm">Keep Growing</h1>
+    <p class="text-body md:text-h4 max-w-prose mx-auto text-charcoal/80">
+      Missed a Chi Alpha Night, or just want more? Catch up right here.
+    </p>
+  </section>
+
+  <!-- Podcast -->
+  <section class="container-page pb-2xl md:pb-3xl">
+    <div class="max-w-2xl mx-auto text-center mb-lg">
+      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">The Podcast</p>
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Chi Alpha, Wherever You Are</h2>
+      <p class="text-body max-w-prose mx-auto">
+        Messages from Chi Alpha Night, available wherever you listen to podcasts.
+      </p>
+    </div>
+
+    <div class="max-w-2xl mx-auto grid gap-md">
+      <iframe
+        style="border-radius: 12px"
+        src={`https://open.spotify.com/embed/show/${SPOTIFY_SHOW_ID}?utm_source=generator`}
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="ENMU Chi Alpha podcast on Spotify"
+      ></iframe>
+
+      <a
+        href={`https://podcasts.apple.com/${APPLE_PODCAST_PATH}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center rounded-brand border border-sage/40 bg-white px-md py-sm font-body font-medium text-body text-charcoal hover:border-green hover:text-green transition-colors"
+        style="height: 152px;"
+      >
+        Listen on Apple Podcasts
+      </a>
+    </div>
+  </section>
+
+  <!-- Study materials placeholder -->
+  <section class="bg-sage/10 py-2xl md:py-3xl">
+    <div class="container-page max-w-2xl mx-auto text-center">
+      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Study Materials</p>
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">More on the Way</h2>
+      <p class="text-body max-w-prose mx-auto">
+        <!-- TODO: replace with real small group study guides / reading plans once ready -->
+        We&rsquo;re putting together small group guides and reading plans to go along with the
+        podcast &mdash; check back soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-green-dark text-cream py-xl md:py-2xl">
+    <div class="container-page text-center">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm text-cream">Questions?</h2>
+      <p class="text-body max-w-prose mx-auto mb-lg text-cream/90">
+        We&rsquo;re happy to talk it through &mdash; reach out anytime.
+      </p>
+      <a href="/contact" class="btn bg-green text-cream hover:brightness-110">Contact Us</a>
+    </div>
+  </section>
+</Layout>

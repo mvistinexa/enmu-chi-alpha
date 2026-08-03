@@ -6,11 +6,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  transparentHeader?: boolean;
 }
 
 const {
   title,
   description = "Chi Alpha is ENMU's college ministry — a place for students to belong, grow, and find community.",
+  transparentHeader = false,
 } = Astro.props;
 ---
 
@@ -38,7 +40,7 @@ const {
     >
       Skip to main content
     </a>
-    <Header />
+    <Header transparent={transparentHeader} />
     <main id="main-content">
       <slot />
     </main>
