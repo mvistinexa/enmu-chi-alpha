@@ -1,22 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const beliefs = [
+const whatWereAbout = [
   {
-    title: 'The Bible',
-    desc: 'We believe Scripture is God’s word — trustworthy, relevant, and worth wrestling with, not just reading.',
+    title: 'Real Devotion',
+    desc: 'Following Jesus includes more than just going to church. It’s about knowing and experiencing God personally, both through the Bible and through authentic prayer. Everything we do centers around knowing and being known by God.',
   },
   {
-    title: 'Jesus',
-    desc: 'We believe Jesus is who he said he was — and that following him changes everything, starting with how we treat each other.',
+    title: 'Real Community',
+    desc: 'College wasn’t meant to be lived alone. This is why small groups are the best way to get involved — a place where friendship is both forged and discovered through laughter, honesty, encouragement, and authenticity.',
   },
   {
-    title: 'Community',
-    desc: 'We believe faith isn’t meant to be private. We grow best together, not alone.',
-  },
-  {
-    title: 'Grace',
-    desc: 'We believe you don’t have to have it figured out to belong here. Come as you are.',
+    title: 'Real Responsibility',
+    desc: 'What God does in us, he wants to do through us. God has uniquely gifted you with the ability and the joy of making a difference, so we want to help connect you to that purpose, whether it means serving on campus or taking the gospel around the world.',
   },
 ];
 
@@ -37,45 +33,76 @@ const leaders = [
 ---
 
 <Layout title="Who We Are" description="Meet ENMU Chi Alpha — our story, what we believe, and the people leading it.">
-  <!-- Our Story -->
+  <!-- Intro -->
   <section class="container-page pt-2xl pb-2xl md:pt-3xl md:pb-3xl grid gap-lg md:grid-cols-2 items-center">
     <div class="aspect-[4/3] rounded-brand bg-sage/30 flex items-center justify-center order-2 md:order-1">
       <!-- TODO: replace with a real candid photo -->
       <span class="text-charcoal/40 text-small">Photo coming soon</span>
     </div>
     <div class="order-1 md:order-2">
-      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Our Story</p>
       <h1 class="font-display font-bold text-h2 md:text-h2-lg mb-sm">
-        Started by Students, Still Led by Students
+        A Place Where People Can Belong Before They Believe
       </h1>
-      <p class="text-body max-w-prose mb-sm">
-        Chi Alpha is the campus ministry of the Assemblies of God, present on college campuses
-        across the country &mdash; including right here at ENMU. We started as a small group of
-        students looking for something realer than a Sunday-only faith, and we&rsquo;ve grown into
-        a community that shows up for each other week after week.
-      </p>
       <p class="text-body max-w-prose">
-        Whether you grew up in church, walked away from it, or have never set foot in one,
-        you&rsquo;ll find the same thing here: real friendships, honest conversations, and space to
-        figure out what you believe &mdash; together.
+        Whether you&rsquo;re looking for friends, a place to grow spiritually, or simply people
+        who will know your name, we&rsquo;d love to meet you. We want Chi Alpha to feel like a
+        home away from home, where you&rsquo;ll find friends who genuinely care about you, a place
+        where your questions are welcome, and a community that points you toward Jesus.
       </p>
     </div>
   </section>
 
-  <!-- What We Believe -->
+  <!-- Our Story -->
   <section class="bg-sage/10 py-2xl md:py-3xl">
+    <div class="container-page max-w-2xl mx-auto text-center">
+      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Our Story</h2>
+      <p class="text-body max-w-prose mx-auto mb-sm">
+        Our Chi Alpha ministry was planted at ENMU in 2023 by a team from New Mexico State
+        University. As part of a nationwide movement reaching college campuses, we&rsquo;re
+        excited to see students encounter Jesus, grow together, and make a difference on campus
+        and beyond.
+      </p>
+      <p class="text-body max-w-prose mx-auto">
+        Whether you grew up in church, walked away from it, or have never been in one, you are
+        welcome to come with your questions, to meet authentic people, and to figure out what you
+        believe through honest conversations.
+      </p>
+    </div>
+  </section>
+
+  <!-- What We're About -->
+  <section class="py-2xl md:py-3xl">
     <div class="container-page">
       <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
-        What We Believe
+        What We&rsquo;re About
       </h2>
-      <div class="grid gap-md sm:grid-cols-2 lg:grid-cols-4">
-        {beliefs.map((b) => (
-          <div class="bg-cream rounded-brand p-md shadow-sm">
-            <h3 class="font-display font-semibold text-h4 mb-xs">{b.title}</h3>
-            <p class="text-body">{b.desc}</p>
+      <div class="grid gap-md sm:grid-cols-3">
+        {whatWereAbout.map((item) => (
+          <div class="bg-cream border border-sage/20 rounded-brand p-md shadow-sm">
+            <h3 class="font-display font-semibold text-h4 mb-xs">{item.title}</h3>
+            <p class="text-body">{item.desc}</p>
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- What We Believe -->
+  <section class="bg-sage/10 py-xl md:py-2xl">
+    <div class="container-page max-w-2xl mx-auto text-center">
+      <h2 class="font-display font-semibold text-h3 md:text-h3-lg mb-sm">What We Believe</h2>
+      <p class="text-body max-w-prose mx-auto mb-sm">
+        We are an evangelical Christian ministry and part of the Assemblies of God. Our teaching
+        is rooted in the Bible and historic Christian beliefs.
+      </p>
+      <a
+        href="https://chialpha.com/our-story/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-body font-medium text-body text-green hover:text-green-dark underline underline-offset-2"
+      >
+        Learn more about our beliefs
+      </a>
     </div>
   </section>
 
