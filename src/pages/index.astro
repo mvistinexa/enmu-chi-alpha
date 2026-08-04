@@ -6,16 +6,19 @@ const ministries = [
     title: 'Chi Alpha Night',
     meta: 'Thursdays · 7:00 PM',
     desc: 'Live music, a short message that makes you think, and a room full of people glad you showed up.',
+    image: '/images/home-chi-alpha-night.jpeg',
   },
   {
     title: 'Small Groups',
     meta: 'Throughout the Week',
     desc: 'Smaller circles where you can actually be known — interesting topics, honest conversation, and real friends.',
+    image: '/images/home-small-groups.jpeg',
   },
   {
     title: 'Game Nights & Hangouts',
     meta: 'When the Mood Strikes',
     desc: "Whether it's game night or just hanging out, this is time to relax, laugh, and be yourself.",
+    image: '/images/home-hangouts.jpeg',
   },
 ];
 ---
@@ -101,9 +104,12 @@ const ministries = [
         &mdash; just come.
       </p>
     </div>
-    <div class="aspect-[4/3] rounded-brand bg-sage/30 flex items-center justify-center">
-      <!-- TODO: replace with a real candid photo (worship night, group hangout, etc.) -->
-      <span class="text-charcoal/40 text-small">Photo coming soon</span>
+    <div class="aspect-[4/3] rounded-brand overflow-hidden">
+      <img
+        src="/images/home-family-away-from-home.jpeg"
+        alt="Students walking together on the ENMU campus"
+        class="w-full h-full object-cover"
+      />
     </div>
   </section>
 
@@ -116,9 +122,8 @@ const ministries = [
       <div class="grid gap-md sm:grid-cols-3">
         {ministries.map((m) => (
           <div class="bg-cream rounded-brand overflow-hidden shadow-sm">
-            <div class="aspect-[4/3] bg-sage/30 flex items-center justify-center">
-              <!-- TODO: replace with real photo for this ministry -->
-              <span class="text-charcoal/40 text-small">Photo coming soon</span>
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={m.image} alt={m.title} class="w-full h-full object-cover" />
             </div>
             <div class="p-md">
               <p class="font-body font-medium text-small-lg text-clay mb-[2px]">{m.meta}</p>
