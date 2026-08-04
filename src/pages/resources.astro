@@ -3,6 +3,37 @@ import Layout from '../layouts/Layout.astro';
 
 const SPOTIFY_SHOW_ID = '3J1IoOicay3pxTKuPbY4rt';
 const APPLE_PODCAST_PATH = 'us/podcast/enmu-chi-alpha/id1797904561';
+
+const growResources = [
+  {
+    title: 'DTC Application',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSeEDvO0Y4FxbkRMj7WbwUbLuLcaB83tGTFSjF2yELJaVz7nqw/viewform?usp=publish-editor',
+  },
+  {
+    title: 'Resources and Book Recommendations',
+    href: 'https://drive.google.com/drive/u/1/folders/1s-E4FLAezLg8rYIDxOuiWiMlyrGS8a6m',
+  },
+  {
+    title: 'Bible Memory Suggestions',
+    href: 'https://drive.google.com/drive/u/1/folders/1s-E4FLAezLg8rYIDxOuiWiMlyrGS8a6m',
+  },
+  {
+    title: 'Ask Away Podcast',
+    href: 'https://open.spotify.com/show/3sayQjeKboZQq08Tk2f8Zx',
+  },
+  {
+    title: 'The Bible Project — Books of the Bible (Old Testament)',
+    href: 'https://www.youtube.com/watch?v=ALsluAKBZ-c&list=PLH0Szn1yYNeeVFodkI9J_WEATHQCwRZ0u',
+  },
+  {
+    title: 'The Bible Project — Books of the Bible (New Testament)',
+    href: 'https://www.youtube.com/watch?v=Q0BrP8bqj0c&list=PLH0Szn1yYNecanpQqdixWAm3zHdhY2kPR',
+  },
+  {
+    title: 'David Pawson — "Unlocking the New Testament"',
+    href: 'https://www.youtube.com/watch?v=F2KMYwBRngU&list=PLfk5IZQHKovK_7RzISco4nVgMvt0bqFUZ',
+  },
+];
 ---
 
 <Layout title="Resources" description="Catch up on the podcast and find resources to keep growing between Chi Alpha Nights.">
@@ -50,16 +81,30 @@ const APPLE_PODCAST_PATH = 'us/podcast/enmu-chi-alpha/id1797904561';
     </div>
   </section>
 
-  <!-- Study materials placeholder -->
+  <!-- Grow resources -->
   <section class="bg-sage/10 py-2xl md:py-3xl">
-    <div class="container-page max-w-2xl mx-auto text-center">
-      <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Study Materials</p>
-      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">More on the Way</h2>
-      <p class="text-body max-w-prose mx-auto">
-        <!-- TODO: replace with real small group study guides / reading plans once ready -->
-        We&rsquo;re putting together small group guides and reading plans to go along with the
-        podcast &mdash; check back soon.
-      </p>
+    <div class="container-page max-w-2xl mx-auto">
+      <div class="text-center mb-lg">
+        <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Keep Growing</p>
+        <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Resources to Explore</h2>
+        <p class="text-body max-w-prose mx-auto">
+          If you&rsquo;re looking for ways to grow in your relationship with God, here are some
+          resources that may be helpful.
+        </p>
+      </div>
+      <div class="flex flex-col gap-sm">
+        {growResources.map((r) => (
+          <a
+            href={r.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between gap-sm bg-cream border border-sage/20 rounded-brand px-md py-sm shadow-sm hover:border-green transition-colors"
+          >
+            <span class="font-body font-medium text-body text-charcoal">{r.title}</span>
+            <span class="text-green" aria-hidden="true">&rarr;</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
