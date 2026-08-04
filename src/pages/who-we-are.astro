@@ -3,14 +3,17 @@ import Layout from '../layouts/Layout.astro';
 
 const whatWereAbout = [
   {
+    number: '01',
     title: 'Real Devotion',
     desc: 'Following Jesus includes more than just going to church. It’s about knowing and experiencing God personally, both through the Bible and through authentic prayer. Everything we do centers around knowing and being known by God.',
   },
   {
+    number: '02',
     title: 'Real Community',
     desc: 'College wasn’t meant to be lived alone. This is why small groups are the best way to get involved — a place where friendship is both forged and discovered through laughter, honesty, encouragement, and authenticity.',
   },
   {
+    number: '03',
     title: 'Real Responsibility',
     desc: 'What God does in us, he wants to do through us. God has uniquely gifted you with the ability and the joy of making a difference, so we want to help connect you to that purpose, whether it means serving on campus or taking the gospel around the world.',
   },
@@ -78,9 +81,10 @@ const leaders = [
       <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-lg text-center">
         What We&rsquo;re About
       </h2>
-      <div class="grid gap-md sm:grid-cols-3">
+      <div class="grid gap-lg sm:grid-cols-3">
         {whatWereAbout.map((item) => (
-          <div class="bg-cream border border-sage/20 rounded-brand p-md shadow-sm">
+          <div class="border-l-[3px] border-clay pl-md">
+            <p class="font-display font-bold text-h2 text-clay mb-[2px]">{item.number}</p>
             <h3 class="font-display font-semibold text-h4 mb-xs">{item.title}</h3>
             <p class="text-body">{item.desc}</p>
           </div>
@@ -94,8 +98,8 @@ const leaders = [
     <div class="container-page max-w-2xl mx-auto text-center">
       <h2 class="font-display font-semibold text-h3 md:text-h3-lg mb-sm">What We Believe</h2>
       <p class="text-body max-w-prose mx-auto mb-sm">
-        We are an evangelical Christian ministry and part of the Assemblies of God. Our teaching
-        is rooted in the Bible and historic Christian beliefs.
+        We are an evangelical Christian ministry affiliated with the General Council of the
+        Assemblies of God. Our teaching is rooted in the Bible and historic Christian beliefs.
       </p>
       <a
         href="https://chialpha.com/our-story/"
