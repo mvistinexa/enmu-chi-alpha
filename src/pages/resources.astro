@@ -37,26 +37,17 @@ const growResources = [
 ---
 
 <Layout title="Resources" description="Catch up on the podcast and find resources to keep growing between Chi Alpha Nights.">
-  <!-- Page intro -->
-  <section class="container-page py-2xl md:py-3xl text-center">
-    <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">Resources</p>
-    <h1 class="font-display font-bold text-hero md:text-hero-lg mb-sm">Keep Growing</h1>
-    <p class="text-body md:text-h4 max-w-prose mx-auto text-charcoal/80">
-      Missed a Chi Alpha Night, or just want more? Catch up right here.
-    </p>
-  </section>
-
   <!-- Podcast -->
-  <section class="container-page pb-2xl md:pb-3xl">
+  <section class="container-page pt-2xl pb-2xl md:pt-3xl md:pb-3xl">
     <div class="max-w-2xl mx-auto text-center mb-lg">
       <p class="uppercase tracking-widest text-small-lg font-medium text-clay mb-xs">The Podcast</p>
-      <h2 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Chi Alpha, Wherever You Are</h2>
+      <h1 class="font-display font-semibold text-h2 md:text-h2-lg mb-sm">Chi Alpha, Wherever You Are</h1>
       <p class="text-body max-w-prose mx-auto">
         Messages from Chi Alpha Night, available wherever you listen to podcasts.
       </p>
     </div>
 
-    <div class="max-w-2xl mx-auto grid gap-md">
+    <div class="max-w-2xl mx-auto flex flex-col items-center gap-md">
       <iframe
         style="border-radius: 12px"
         src={`https://open.spotify.com/embed/show/${SPOTIFY_SHOW_ID}?utm_source=generator`}
@@ -73,8 +64,7 @@ const growResources = [
         href={`https://podcasts.apple.com/${APPLE_PODCAST_PATH}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center justify-center rounded-brand border border-sage/40 bg-white px-md py-sm font-body font-medium text-body text-charcoal hover:border-green hover:text-green transition-colors"
-        style="height: 152px;"
+        class="btn-secondary"
       >
         Listen on Apple Podcasts
       </a>
