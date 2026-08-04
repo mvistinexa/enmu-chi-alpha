@@ -21,16 +21,19 @@ const whatWereAbout = [
 
 const leaders = [
   {
-    name: 'Name Coming Soon',
-    role: 'Campus Director',
+    name: 'Justin Vistine',
+    role: 'Campus Pastor',
+    image: '/images/team-justin.jpeg',
+    imagePosition: 'object-top',
   },
   {
-    name: 'Name Coming Soon',
+    name: 'Jeremy Licano',
     role: 'Staff',
   },
   {
-    name: 'Name Coming Soon',
-    role: 'Student Leader',
+    name: 'Marissa Vistine',
+    role: 'Staff',
+    image: '/images/team-marissa.jpeg',
   },
 ];
 ---
@@ -120,10 +123,20 @@ const leaders = [
     <div class="grid gap-md sm:grid-cols-3 max-w-3xl mx-auto">
       {leaders.map((leader) => (
         <div class="text-center">
-          <div class="aspect-square rounded-brand bg-sage/20 flex items-center justify-center mb-sm">
-            <!-- TODO: replace with a real staff/leader photo -->
-            <span class="text-charcoal/40 text-small">Photo coming soon</span>
-          </div>
+          {leader.image ? (
+            <div class="aspect-square rounded-brand overflow-hidden mb-sm">
+              <img
+                src={leader.image}
+                alt={leader.name}
+                class={`w-full h-full object-cover ${leader.imagePosition ?? ''}`}
+              />
+            </div>
+          ) : (
+            <div class="aspect-square rounded-brand bg-sage/20 flex items-center justify-center mb-sm">
+              <!-- TODO: replace with a real staff photo -->
+              <span class="text-charcoal/40 text-small">Photo coming soon</span>
+            </div>
+          )}
           <p class="font-display font-semibold text-h4">{leader.name}</p>
           <p class="font-body text-small-lg text-clay uppercase tracking-wide">{leader.role}</p>
         </div>
